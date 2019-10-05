@@ -1,0 +1,28 @@
+<div>
+
+<div class="container">
+  <div class="product-container">
+   <div id="row-products" class="row">
+    <% @products.each do |product| %>
+    <div class="card" style="width: 18rem;">
+      <img src="https://www.w3schools.com/images/picture.jpg" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= product.pname %></h5>
+        <p class="card-text"><%= product.pdescription %></p>
+        <p class="card-price"><%= product.pprice %></p>
+        <p class="card-location"><%= product.plocation %></p>
+       <div class="products-buttons"> 
+        <%= link_to 'Show', product ,:class=>"btn btn-primary" %>
+        <%= link_to 'Edit', edit_product_path(product),:class=>"btn btn-primary" %>
+        <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-primary" %>
+       </div>
+      </div>
+      </div>
+    <% end %>
+    </div> 
+   </div> 
+<br>
+
+<%= link_to 'New Product', new_product_path %>
+</div>
+</div>

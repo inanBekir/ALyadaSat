@@ -1,0 +1,38 @@
+.container-show{
+    padding-top: 5%;
+    background-color: salmon;
+}
+
+.product-info{
+    background-color: azure;
+    padding: 5%;
+}
+
+.btn-group{
+    left: 70%;
+    margin-top: 30%;
+
+}
+
+.product-name{
+    text-transform: uppercase;
+}
+
+.container-edit{
+    padding-top: 5%;
+    background-color:cornsilk;
+}
+
+.product-edit{
+   
+    padding: 5%;
+}
+
+label{
+    text-transform: uppercase;
+}
+
+.edit-update-button{
+    right: 40px;
+    position: absolute;
+}
