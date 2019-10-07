@@ -23,7 +23,7 @@ a {
   color: #000;
 
   &:visited {
-    color: #666;
+    color: #fff;
   }
 
   &:hover {
@@ -112,4 +112,23 @@ label {
 
 .products-buttons{
   margin:10px;
+}
+
+.btn{
+  margin: 5px;
+}
+
+.login-register_buttons{
+  a {
+    color: #000;
+  
+    &:visited {
+      color: #28a745;
+    }
+  
+    &:hover {
+      color: #fff;
+      background-color: #000;
+    }
+  }
 }
