@@ -23,7 +23,7 @@ a {
   color: #000;
 
   &:visited {
-    color: #fff;
+    color: red;
   }
 
   &:hover {
@@ -94,8 +94,9 @@ label {
 }
 
 .card{
-  margin: 20px;
-  max-width: 21%;
+  margin: 2%;
+  margin-top: 5%;
+
 }
 
 .card-title {
@@ -107,7 +108,7 @@ label {
 }
 
 #row-products{
-   margin-left: 1px;
+  margin-left: 5%;
 }
 
 .products-buttons{
@@ -116,6 +117,20 @@ label {
 
 .btn{
   margin: 5px;
+}
+#urun-sat-button{
+  a {
+    color: #000;
+  
+    &:visited {
+      color: #ffc107;
+    }
+  
+    &:hover {
+      color: #fff;
+      background-color: #000;
+    }
+  }
 }
 
 .login-register_buttons{
@@ -132,3 +147,4 @@ label {
     }
   }
 }
+
