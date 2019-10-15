@@ -28,8 +28,9 @@
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>
           </ul>
+          
           <form class="form-inline my-2 my-lg-0 login-register_buttons">
-           <%= link_to 'Ürün Sat', edit_user_registration_path , :class=>"btn btn-outline-warning my-2 my-sm-0" %>
+          <span id="product-sell-button"><%= link_to 'Ürün Sat', edit_user_registration_path, :class=>"btn btn-outline-warning my-2 my-sm-0" %></span>
             <% if user_signed_in? %>
               <%= link_to current_user.email, edit_user_registration_path ,:class=>"btn btn-outline-success my-2 my-sm-0" %>
               <%= link_to 'Logout', destroy_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0", method: :delete %>

@@ -23,7 +23,7 @@ a {
   color: #000;
 
   &:visited {
-    color: red;
+    color: #ffc107;
   }
 
   &:hover {
@@ -108,7 +108,7 @@ label {
 }
 
 #row-products{
-  margin-left: 5%;
+  margin-left: 3%;
 }
 
 .products-buttons{
@@ -118,7 +118,7 @@ label {
 .btn{
   margin: 5px;
 }
-#urun-sat-button{
+#product-sell-button{
   a {
     color: #000;
   
@@ -132,7 +132,6 @@ label {
     }
   }
 }
-
 .login-register_buttons{
   a {
     color: #000;
