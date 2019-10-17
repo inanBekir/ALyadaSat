@@ -49,7 +49,7 @@
 
     <div class="col-xs-12 col-md-6">
       <div class="product-edit">
-      <%= form_with model: @product, :html => { :multipart => true } ,local: true do |form| %>
+      <%= form_with model: @product, :html => { :multipart => true } do |form| %>
             <p>
                 <%= form.label :"Ürün Başlığı:" %>
                 <%= form.text_field :pname ,:class=>"autocomplete form-control"%>
@@ -62,13 +62,13 @@
             </p>
             <p>
                 <%= form.label :"Ürün Fiyatı:" %>
-                <%= form.text_field :pprice ,:class=>"autocomplete form-control"%>
+                <span id="product-price-lab"><%= form.text_field :pprice ,:id=>"product-price-label",:class=>"autocomplete form-control"%>
+                <img id="turkish-coin-icon" src="https://image.flaticon.com/icons/svg/12/12037.svg" width="25" height="25" alt="Turkish Lira free icon" title="Turkish Lira free icon">
+                </span>
                 
             </p>
              <p>
-               
                 <%= form.file_field :photo %>
-                
             </p>
             <p class="edit-update-button">
                 <%= form.submit class: 'btn btn-primary'%>

@@ -33,7 +33,7 @@
           </ul>
           
           <form class="form-inline my-2 my-lg-0 login-register_buttons">
-          <span id="product-sell-button"><%= link_to 'Ürün Sat', edit_user_registration_path, :class=>"btn btn-outline-warning my-2 my-sm-0" %></span>
+          <span id="product-sell-button"><%= link_to 'Ürün Sat', new_product_path, :class=>"btn btn-outline-warning my-2 my-sm-0" %></span>
             <% if user_signed_in? %>
               <%= link_to current_user.email, edit_user_registration_path ,:class=>"btn btn-outline-success my-2 my-sm-0" %>
               <%= link_to 'Logout', destroy_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0", method: :delete %>
