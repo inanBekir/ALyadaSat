@@ -1,11 +1,10 @@
 <div>
-
 <div class="container">
   <div class="product-container">
    <div id="row-products" class="row">
     <% @products.each do |product| %>
     <div class="card" style="width: 18rem;">
-      <img src="https://www.w3schools.com/images/picture.jpg" alt="...">
+       <%= image_tag product.photo.url(:medium), :class=>"img-slider" %>
       <div class="card-body">
         <h5 class="card-title"><%= product.pname %></h5>
         <p class="card-text"><%= product.pdescription %></p>
