@@ -1,9 +1,18 @@
 <div class="container">
-  <div class="card login-register-card" style="width: 18rem;">
+<div class="row">
+  <div class="col-4">
+    <div class="list-group">
+    <span class="list-group-item"><%=current_user.email%></span>
+    <a href="" class="list-group-item">First item</a>
+    <a href="/products/new" class="list-group-item">Mesajlar</a>
+    <a href="/users/edit" class="list-group-item">Üyeliğimi Güncelle</a>
+  </div>
+  </div>
+  <div class="col-8">
+   <div class="card login-register-card" style="width: 18rem;">
   <img src="https://www.w3schools.com/images/picture.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -45,6 +54,8 @@
       <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
       <%= link_to "Back", :back %>
+  </div>
+</div>
   </div>
 </div>
 </div>
