@@ -1,21 +1,26 @@
 <div>
-
 <div class="container">
   <div class="product-container">
    <div id="row-products" class="row">
     <% @products.each do |product| %>
     <div class="card" style="width: 18rem;">
-      <img src="https://www.w3schools.com/images/picture.jpg" alt="...">
+       <%= link_to(image_tag(product.photo.url(:medium), :class=>"img-slider"), product) %>
       <div class="card-body">
         <h5 class="card-title"><%= product.pname %></h5>
         <p class="card-text"><%= product.pdescription %></p>
-        <p class="card-price"><%= product.pprice %></p>
+        <p class="card-price"><%= product.pprice %><img id="turkish-coin-icon" src="https://image.flaticon.com/icons/svg/12/12037.svg" width="15" height="25" alt="Turkish Lira free icon" title="Turkish Lira free icon"></p>
         <p class="card-location"><%= product.plocation %></p>
-       <div class="products-buttons"> 
-        <%= link_to 'Show', product ,:class=>"btn btn-primary" %>
-        <%= link_to 'Edit', edit_product_path(product),:class=>"btn btn-primary" %>
-        <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-primary" %>
-       </div>
+       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div id="btn-group" class="btn-group mr-5" role="group" aria-label="First group">
+          <%= link_to(image_tag("https://image.flaticon.com/icons/svg/25/25297.svg" ,:class=>"fav-icon-button"), product) %>
+        </div>
+        <div id="btn-group" class="btn-group mr-5 pl-3" role="group" aria-label="Second group">
+          <%= link_to(image_tag("https://image.flaticon.com/icons/svg/2089/2089808.svg" ,:class=>"share-icon-button"), product) %>
+        </div>
+        <div id="btn-group" class="btn-group pl-1" role="group" aria-label="Third group">
+          <%= link_to(image_tag("https://image.flaticon.com/icons/svg/2089/2089211.svg" ,:class=>"share-icon-button"), product) %>
+        </div>
+      </div>
       </div>
       </div>
     <% end %>

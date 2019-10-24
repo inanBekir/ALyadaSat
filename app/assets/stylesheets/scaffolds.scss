@@ -84,7 +84,6 @@ label {
 }
 
 .product-container{
-  background-color: #666;
   display: flex;
 }
 
@@ -112,7 +111,7 @@ label {
 }
 
 .products-buttons{
-  margin:10px;
+  margin:0px;
 }
 
 .btn{
@@ -145,4 +144,23 @@ label {
       background-color: #000;
     }
   }
+}
+.avatar{
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.card-text{
+  width: 250px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     font-family: 'Courier New', Courier, monospace;
+}
+.card-price{
+  font-size: 20px;
+}
+#btn-group{
+  position: inherit;
 }
