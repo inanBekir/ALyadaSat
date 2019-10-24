@@ -14,11 +14,13 @@
         <div id="btn-group" class="btn-group mr-5" role="group" aria-label="First group">
           <%= link_to(image_tag("https://image.flaticon.com/icons/svg/25/25297.svg" ,:class=>"fav-icon-button"), product) %>
         </div>
-        <div id="btn-group" class="btn-group mr-5 pl-3" role="group" aria-label="Second group">
+        <div id="btn-group" class="btn-group mr-5 pl-1" role="group" aria-label="Second group">
           <%= link_to(image_tag("https://image.flaticon.com/icons/svg/2089/2089808.svg" ,:class=>"share-icon-button"), product) %>
         </div>
         <div id="btn-group" class="btn-group pl-1" role="group" aria-label="Third group">
           <%= link_to(image_tag("https://image.flaticon.com/icons/svg/2089/2089211.svg" ,:class=>"share-icon-button"), product) %>
+                  <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-primary" %>
+
         </div>
       </div>
       </div>
