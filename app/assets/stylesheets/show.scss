@@ -84,3 +84,19 @@ label{
     width: 45px;
     height: 45px;
   }
+  #edit-row{
+    a {
+      color: #000;
+    
+      &:visited {
+        color: #0a0a0a;
+      }
+    
+      &:hover {
+        color: #fff;
+        background-color: #000;
+        text-decoration: none;
+      }
+    }
+    
+  }
