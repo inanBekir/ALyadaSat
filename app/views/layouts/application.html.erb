@@ -35,11 +35,11 @@
           <form class="form-inline my-2 my-lg-0 login-register_buttons">
           <span id="product-sell-button"><%= link_to 'Ürün Sat', new_product_path, :class=>"btn btn-outline-warning my-2 my-sm-0" %></span>
             <% if user_signed_in? %>
-              <%= link_to 'Logout', destroy_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0", method: :delete %>
+              <%= link_to 'Çıkış Yap', destroy_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0", method: :delete %>
               <%= link_to image_tag(current_user.avatar.url(:thumb), border: 0,:class=>"avatar"), edit_user_registration_path ,:class=>"avatar" %>
             <% else %>
-              <%= link_to 'Login', new_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
-              <%= link_to 'Sign Up', new_user_registration_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
+              <%= link_to 'Giriş Yap', new_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
+              <%= link_to 'Kayıt Ol', new_user_registration_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
             <% end %>  
           </form>
         </div>
