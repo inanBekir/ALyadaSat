@@ -3,6 +3,7 @@
   <div class="product-container">
    <div id="row-products" class="row">
     <% @products.each do |product| %>
+     <div class="col">
     <div class="card" style="width: 18rem;">
        <%= link_to(image_tag(product.photo.url(:medium), :class=>"img-slider"), product) %>
       <div class="card-body">
@@ -22,6 +23,7 @@
                   <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-primary" %>
 
         </div>
+      </div>
       </div>
       </div>
       </div>

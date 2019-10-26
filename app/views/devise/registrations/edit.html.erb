@@ -2,7 +2,7 @@
 <div id="edit-row" class="row">
   <div class="col-4">
     <div class="list-group">
-    <span class="list-group-item"><%=current_user.email%></span>
+    <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
     <a href="" class="list-group-item">Satışta Olanlar</a>
     <a href="" class="list-group-item">Satılanlar</a>
     <a href="" class="list-group-item">Favorilerim</a>
@@ -11,7 +11,7 @@
   </div>
   </div>
   <div class="col-8">
-   <div class="card login-register-card" style="width: 18rem;">
+   <div id="login-register-card" class="card login-register-card" style="width: 18rem;">
   <img src="https://www.w3schools.com/images/picture.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>

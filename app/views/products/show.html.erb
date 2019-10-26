@@ -63,7 +63,14 @@
         <%= @product.pdescription %>
       </p>
     </div>
-      
+      <h2>Users</h2>
+<ul>
+  <% @users.each do |user| %>
+  <% if current_user.id != nil %>
+    <li><%= link_to user.username, conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post %></li>
+  <% end %>
+  <% end %>
+</ul>
 
       <div class="btn-group" role="group" aria-label="Basic example">
         <%= link_to 'Edit', edit_product_path(@product),:class=>"btn btn-danger" %> 

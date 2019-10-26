@@ -21,7 +21,7 @@
               <div class="chat_people">
                 <div class="chat_img"> <%= image_tag(current_user.avatar.url(:thumb), border: 0,:class=>"avatar")%> </div>
                 <div class="chat_ib">
-                  <h5><%= link_to conversation.recipient(current_user).email, conversation_messages_path(conversation) %>
+                  <h5><%= link_to conversation.recipient(current_user).username, conversation_messages_path(conversation) %>
                     <% if !conversation.unread_message_count(current_user).zero? %>
                         (<%= conversation.unread_message_count(current_user) %>)
                     <% end %> <span class="chat_date"><%=@message.created_at%></span></h5>
