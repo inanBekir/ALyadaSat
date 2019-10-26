@@ -1,11 +1,16 @@
 <div class="container">
-  <div class="card login-register-card" style="width: 18rem;">
+  <div id="login-register-card" class="card login-register-card" style="width: 18rem;">
   <img src="https://www.w3schools.com/images/picture.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">KAYIT OL</h5>
 
      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username %>
+      </div>
+
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

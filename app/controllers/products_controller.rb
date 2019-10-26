@@ -5,11 +5,13 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @users = User.where.not(id: current_user.id)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @users = User.where.not(id: current_user.id)
   end
 
   # GET /products/new

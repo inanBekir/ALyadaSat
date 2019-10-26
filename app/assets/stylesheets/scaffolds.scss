@@ -7,7 +7,10 @@ body {
   line-height: 18px;
 }
 
-p, ol, ul, td {
+p,
+ol,
+ul,
+td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -41,9 +44,14 @@ td {
 }
 
 div {
-  &.field, &.actions {
+  &.field,
+  &.actions {
     margin-bottom: 10px;
   }
+}
+.home-logo {
+  width: 128px;
+  height: 58px;
 }
 
 #notice {
@@ -83,84 +91,83 @@ label {
   display: block;
 }
 
-.product-container{
+.product-container {
   display: flex;
 }
 
-.product-show-container{
+.product-show-container {
   background-color: #666;
   display: flex;
 }
 
-.card{
+.card {
   margin: 2%;
   margin-top: 5%;
-
 }
 
 .card-title {
   text-align: center;
 }
 
-.card-price{
+.card-price {
   text-align: right;
 }
 
-#row-products{
+#row-products {
   margin-left: 3%;
 }
 
-.products-buttons{
-  margin:0px;
+.products-buttons {
+  margin: 0px;
 }
 
-.btn{
+.btn {
   margin: 5px;
 }
-#product-sell-button{
+#product-sell-button {
   a {
     color: #000;
-  
+
     &:visited {
       color: #ffc107;
     }
-  
+
     &:hover {
       color: #fff;
       background-color: #000;
     }
   }
 }
-.login-register_buttons{
+.login-register_buttons {
   a {
     color: #000;
-  
+
     &:visited {
       color: #28a745;
     }
-  
+
     &:hover {
       color: #fff;
       background-color: #000;
     }
   }
 }
-.avatar{
+.avatar {
   vertical-align: middle;
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
-.card-text{
+.card-text {
   width: 250px;
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
-     font-family: 'Courier New', Courier, monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "Courier New", Courier, monospace;
 }
-.card-price{
+.card-price {
   font-size: 20px;
 }
-#btn-group{
+#btn-group {
   position: inherit;
 }
