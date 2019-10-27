@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @users = User.where.not(id: current_user.id)
   end
 
   # GET /products/1
