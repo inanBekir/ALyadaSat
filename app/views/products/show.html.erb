@@ -66,7 +66,7 @@
       <h2>Users</h2>
 <ul>
   <% @users.each do |user| %>
-  <% if current_user.id != nil %>
+  <% if user.id == @product.user_id %>
     <li><%= link_to user.username, conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post %></li>
   <% end %>
   <% end %>
