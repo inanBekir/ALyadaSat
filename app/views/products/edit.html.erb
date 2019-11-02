@@ -70,16 +70,18 @@
              <p>
                 <%= form.file_field :photo %>
             </p>
-            <p class="edit-update-button">
-                <%= form.submit class: 'btn btn-primary'%>
-            </p>
+            <div class="btn-group" role="group" aria-label="Basic example">
+               <%= button_tag 'Güncelle', :class=> "btn btn-success" do %>
+                 <i class="fas fa-save" style="font-size: 32px;"></i>
+               <% end %>
+                <%= link_to @product, :class=>"btn btn-success" do %>
+                  <i class="fas fa-eye" style="font-size: 32px;"></i>
+                <% end %>
+                <%= link_to products_path, :class=>"btn btn-success" do %>
+                  <i class="fas fa-arrow-alt-circle-left" style="font-size: 32px;"></i>
+                <% end %>
+                </div>
       <% end %>
-  
-      <div class="btn-group" role="group" aria-label="Basic example">
-       <%= link_to 'Show', @product, :class=>"btn btn-danger" %>
-       <%= link_to 'Back', products_path ,:class=>"btn btn-warning"%>
-      </div>
-      
       </div>
      </div>
     </div>
