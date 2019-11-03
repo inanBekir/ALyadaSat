@@ -63,20 +63,20 @@
         <%= @product.pdescription %>
       </p>
     </div>
-      <h2>Users</h2>
-<ul>
-  <% @users.each do |user| %>
-  <% if current_user.id != nil %>
-    <li><%= link_to user.username, conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post %></li>
-  <% end %>
-  <% end %>
-</ul>
 
       <div class="btn-group" role="group" aria-label="Basic example">
-        <%= link_to 'Edit', edit_product_path(@product),:class=>"btn btn-danger" %> 
-        <%= link_to 'Back', products_path ,:class=>"btn btn-success" %>
+        <%= link_to edit_product_path(@product), :class=>"btn btn-success" do %>
+            <i class="fas fa-edit" style="font-size: 32px;"></i>
+        <% end %>
+        <%= link_to products_path, :class=>"btn btn-success" do %>
+            <i class="fas fa-arrow-alt-circle-left" style="font-size: 32px;"></i>
+        <% end %>
+      <% if current_user.id == @product.user_id%>
+       <%= link_to @product, method: :delete, data: { confirm: 'Bu ürünü kaldırmak istediğinize emin misiniz?' } ,:class=>"btn btn-success" do %>
+        <i class="fas fa-trash-alt" style="font-size: 32px;"></i>
+       <% end %>
+        <% end %>
       </div>
-      
       </div>
      </div>
     </div>

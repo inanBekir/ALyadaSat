@@ -1,16 +1,19 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [ :show, :index]
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
+    if user_signed_in?
+    @users = User.where.not(id: current_user.id)
+    end
+
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    @users = User.where.not(id: current_user.id)
   end
 
   # GET /products/new
@@ -25,7 +28,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    attributes = product_params.merge(user_id: current_user.id)
+    @product = Product.new(attributes)
 
     respond_to do |format|
       if @product.save
@@ -70,6 +74,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:pname, :pdescription, :pprice, :pimage, :plocation, :photo)
+      params.require(:product).permit(:pname, :pdescription, :pprice, :pimage, :plocation, :photo, :user_id)
     end
 end

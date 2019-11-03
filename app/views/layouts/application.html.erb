@@ -8,33 +8,36 @@
     <%= stylesheet_link_tag    'show', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/445e609dfd.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
 
   <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="/"><img class="home-logo" src="/assets/navbar/logo-home.png"></a>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          
-          <form class="form-inline my-2 my-lg-0 login-register_buttons">
-          <span id="product-sell-button"><%= link_to 'Ürün Sat', new_product_path, :class=>"btn btn-outline-warning my-2 my-sm-0" %></span>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+    <a class="navbar-brand" href="/"><img class="home-logo" src="/assets/navbar/logo-home.png"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+                <span id="product-sell-button"><%= link_to 'Ürün Sat', new_product_path, :class=>"btn btn-outline-warning my-2 my-sm-0" %></span>
             <% if user_signed_in? %>
               <%= link_to 'Çıkış Yap', destroy_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0", method: :delete %>
               <%= link_to image_tag(current_user.avatar.url(:thumb), border: 0,:class=>"avatar"), edit_user_registration_path ,:class=>"avatar" %>
@@ -42,9 +45,10 @@
               <%= link_to 'Giriş Yap', new_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
               <%= link_to 'Kayıt Ol', new_user_registration_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
             <% end %>  
-          </form>
-        </div>
-      </nav>
+    </form>
+  </div>
+</nav>
+
       <%if notice %><div class="alert alert-info"><%= notice %></div><% end %>
       <%if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
     <%= yield %>
