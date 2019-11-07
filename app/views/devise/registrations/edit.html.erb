@@ -6,7 +6,11 @@
     <a href="" class="list-group-item">Satışta Olanlar</a>
     <a href="" class="list-group-item">Satılanlar</a>
     <a href="" class="list-group-item">Favorilerim</a>
-    <a href="/products/new" class="list-group-item">Mesajlar</a>
+    <% @users.each do |user| %>
+     <% if user.id == current_user.id%>
+    <%= link_to 'Mesajlar', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post , :class=>"list-group-item" %>
+  <% end %>
+   <% end %>
     <a href="/users/edit" class="list-group-item">Üyeliğimi Güncelle</a>
   </div>
   </div>

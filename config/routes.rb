@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'messages/index'
   get 'conversations/index'
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'users/registrations' }
+  devise_scope :user do
+    get "users/profile"=> "users/registrations#profile", :as => "profile_registration"
+  end
   resources :products
 
   root 'products#index'

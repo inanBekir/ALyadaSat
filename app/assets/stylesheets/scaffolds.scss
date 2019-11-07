@@ -115,6 +115,7 @@ label {
 
 #row-products {
   margin-left: 3%;
+  margin-top: 10%;
 }
 
 .products-buttons {
@@ -134,7 +135,7 @@ label {
 
     &:hover {
       color: #fff;
-      background-color: #000;
+      background-color: #ffc107;
     }
   }
 }
@@ -170,4 +171,10 @@ label {
 }
 #btn-group {
   position: inherit;
+}
+#navbar {
+  z-index: 10000;
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
