@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_190526) do
     t.string "pname"
     t.string "pdescription"
     t.integer "pprice"
-    t.string "pimage"
+    t.boolean "pfavorites", default: false
     t.string "plocation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

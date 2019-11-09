@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :pname
       t.string :pdescription
       t.integer :pprice
-      t.string :pimage
+      t.boolean :pfavorites, default: false
       t.string :plocation
 
       t.timestamps

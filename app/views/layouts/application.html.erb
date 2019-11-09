@@ -40,7 +40,7 @@
                 <span id="product-sell-button"><%= link_to 'Ürün Sat', new_product_path, :class=>"btn btn-outline-warning my-2 my-sm-0" %></span>
             <% if user_signed_in? %>
               <%= link_to 'Çıkış Yap', destroy_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0", method: :delete %>
-              <%= link_to image_tag(current_user.avatar.url(:thumb), border: 0,:class=>"avatar"), 'users/profile' ,:class=>"avatar" %>
+              <%= link_to image_tag(current_user.avatar.url(:thumb), border: 0,:class=>"avatar"), profile_registration_path ,:class=>"avatar" %>
             <% else %>
               <%= link_to 'Giriş Yap', new_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
               <%= link_to 'Kayıt Ol', new_user_registration_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
