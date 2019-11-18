@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar])
     end
 
+    def favorite_text
+      @favorite = "<div class=alert alert-primary close role=alert>Ürün favorilere eklendi.</div>"
+      @unFavorite = "<div class=alert alert-primary role=alert>Ürün favorilerden silindi.</div>"
+      return @favorite_exists ? @favorite.html_safe : @unFavorite.html_safe
+    end
+    helper_method :favorite_text
 end

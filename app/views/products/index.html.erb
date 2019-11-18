@@ -1,4 +1,5 @@
 <div>
+<%= content_tag(:div, content_tag(:p), class: "favori-alert", id:'favorite_link', remote: true) %>
 <div class="container">
   <div class="product-container">
    <div id="row-products" class="row">
@@ -13,7 +14,13 @@
         <p class="card-location"><%= product.plocation %></p>
        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div id="btn-group" class="btn-group mr-5" role="group" aria-label="First group">
-          <%= link_to(image_tag("https://image.flaticon.com/icons/svg/25/25297.svg" ,:class=>"fav-icon-button"), product) %>
+         <% if user_signed_in? %>
+          <% @users.each do |user| %>
+          <% if user.id == product.user_id%>
+            <%= link_to(image_tag("https://image.flaticon.com/icons/svg/25/25297.svg" ,:class=>"fav-icon-button"), favorites_update_path(product: product), remote: true) %>
+           <% end %>
+          <% end %>
+        <% end %>
         </div>
         <div id="btn-group" class="btn-group mr-5 pl-1" role="group" aria-label="Second group">
           <%= link_to(image_tag("https://image.flaticon.com/icons/svg/2089/2089808.svg" ,:class=>"share-icon-button"), product) %>

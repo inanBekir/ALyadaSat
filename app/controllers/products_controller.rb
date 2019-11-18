@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     @products = Product.all
     if user_signed_in?
     @users = User.where.not(id: current_user.id)
+    @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
     end
 
   end

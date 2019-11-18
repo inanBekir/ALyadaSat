@@ -1,0 +1,30 @@
+<div class="container">
+<div id="edit-row" class="row">
+  <div class="col-lg-4 col-md-5 col-sm-4">
+    <div class="list-group">
+    <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
+    <a href="" class="list-group-item">Satışta Olanlar</a>
+    <a href="" class="list-group-item">Satılanlar</a>
+    <% @users.each do |user| %>
+     <% if user.id == current_user.id%>
+     <%= link_to 'Favorilerim', favorites_index_path , :class=>"list-group-item" %>
+    <%= link_to 'Mesajlar', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post , :class=>"list-group-item" %>
+  <% end %>
+   <% end %>
+    <a href="/users/edit" class="list-group-item">Üyeliğimi Güncelle</a>
+  </div>
+  </div>
+  <%= current_user.favorites.each do |favorite|%>
+  <div class="col-lg-4 col-md-7 col-sm-8">
+    <div class="card" style="width: 18rem;">
+   <%= link_to(image_tag(favorite.product.photo.url(:medium), :class=>"img-slider"), favorite.product) %>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%= link_to favorite.product.pname, favorite.product%>
+  </div>
+</div>
+    </div> 
+    <% end %>
+   </div> 
+   </div> 
