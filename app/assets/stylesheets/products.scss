@@ -2,9 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .favori-alert {
-  margin-top: 100px;
+  z-index: 10000;
+  top: 0px;
+  width: 100%;
   text-align: center;
-  color: rgb(39, 41, 43);
-  background-color: rgb(124, 195, 255);
-  border-color: rgb(0, 80, 167);
+  color: white;
+}
+#favorite_link{
+  position: fixed;
 }
