@@ -2,7 +2,7 @@ body {
   background-color: #fff;
   color: #333;
   margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -11,7 +11,7 @@ p,
 ol,
 ul,
 td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -33,6 +33,7 @@ a {
     color: #fff;
     //background-color: #000;
   }
+  
 }
 
 th {
@@ -52,6 +53,10 @@ div {
 .home-logo {
   width: 128px;
   height: 58px;
+}
+
+.container{
+  margin-top: 5.4rem;
 }
 
 #notice {
@@ -91,6 +96,14 @@ label {
   display: block;
 }
 
+.alert{
+  margin-top: 5.4rem;
+  z-index: 10000;
+  top: 0px;
+  width: 100%;
+  background-color: rebeccapurple;
+}
+
 .product-container {
   display: flex;
 }
@@ -115,7 +128,6 @@ label {
 
 #row-products {
   margin-left: 3%;
-  margin-top: 10%;
 }
 
 .products-buttons {

@@ -5,13 +5,13 @@
     <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
     <a href="" class="list-group-item">Satışta Olanlar</a>
     <a href="" class="list-group-item">Satılanlar</a>
-    <a href="" class="list-group-item">Favorilerim</a>
     <% @users.each do |user| %>
      <% if user.id == current_user.id%>
+     <%= link_to 'Favorilerim', favorites_index_path , :class=>"list-group-item" %>
     <%= link_to 'Mesajlar', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post , :class=>"list-group-item" %>
   <% end %>
    <% end %>
-    <a href="/users/edit" class="list-group-item">Üyeliğimi Güncelle</a>
+    <a href="/users/edit" class="list-group-item bg-secondary disabled">Üyeliğimi Güncelle</a>
   </div>
   </div>
   <div class="col-lg-8 col-md-7 col-sm-8">

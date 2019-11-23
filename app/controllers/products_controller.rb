@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     @products = Product.all
     if user_signed_in?
     @users = User.where.not(id: current_user.id)
+    @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
     end
 
   end
@@ -16,6 +17,12 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def isonsell
+    @users = User.all
+    @product = Product.where(isonsell: true , user_id: current_user)
+  
+   
+  end
   # GET /products/new
   def new
     @product = Product.new
@@ -74,6 +81,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:pname, :pdescription, :pprice, :pimage, :plocation, :photo, :user_id)
+      params.require(:product).permit(:pname, :pdescription, :pprice, :pimage, :plocation, :photo,:isonsell, :user_id)
     end
 end

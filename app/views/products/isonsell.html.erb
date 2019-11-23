@@ -1,0 +1,31 @@
+<div class="container">
+<div id="edit-row" class="row">
+  <div class="col-lg-4 col-md-5 col-sm-4">
+    <div class="list-group">
+    <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
+    <a href="" class="list-group-item bg-secondary disabled">Satışta Olanlar</a>
+    <a href="" class="list-group-item">Satılanlar</a>
+    <% @users.each do |user| %>
+     <% if user.id == current_user.id%>
+     <%= link_to 'Favorilerim', favorites_index_path , :class=>"list-group-item" %>
+    <%= link_to 'Mesajlar', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post , :class=>"list-group-item" %>
+  <% end %>
+   <% end %>
+    <a href="/users/edit" class="list-group-item">Üyeliğimi Güncelle</a>
+  </div>
+  </div>
+  <% @product.each do |p| %>
+  <% if p.isonsell == true %>
+    <div class="col-lg-4 col-md-7 col-sm-8">
+    <div class="card" style="width: 18rem;">
+   <%= link_to(image_tag(p.photo.url(:medium), :class=>"img-slider"), p) %>
+  <div class="card-body">
+    <h5 class="card-title"><%= p.pname%></h5>
+    <p class="card-text"><%= p.pdescription%></p>
+  </div>
+</div>
+</div> 
+  <% end %> 
+   <% end %>
+   </div> 
+   </div> 

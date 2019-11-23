@@ -1,3 +1,13 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.favori-alert {
+  z-index: 10000;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+#favorite_link{
+  position: fixed;
+}
