@@ -3,10 +3,14 @@
 <div class="col-lg-4 col-md-5 col-sm-2 mt-5">
     <div class="list-group">
     <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
-    <a href="" class="list-group-item">Satışta Olanlar</a>
+    <a href="/products/isonsell" class="list-group-item">Satışta Olanlar</a>
     <a href="" class="list-group-item">Satılanlar</a>
-    <a href="" class="list-group-item">Favorilerim</a>
-    <a href="/products/new" class="list-group-item">Mesajlar</a>
+     <% @users.each do |user| %>
+     <% if user.id == current_user.id%>
+     <%= link_to 'Favorilerim', favorites_index_path , :class=>"list-group-item" %>
+  <% end %>
+   <% end %>
+    <a href="#" class="list-group-item bg-secondary disabled">Mesajlar</a>
     <a href="/users/edit" class="list-group-item">Üyeliğimi Güncelle</a>
   </div>
   </div>

@@ -1,6 +1,5 @@
 class FavoritesController < ApplicationController
   def index
-    @products = Product.all
     @users = User.all
   end
   def update

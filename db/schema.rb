@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_165741) do
     t.string "pdescription"
     t.integer "pprice"
     t.boolean "pfavorites", default: false
+    t.boolean "isonsell", default: true
     t.string "plocation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

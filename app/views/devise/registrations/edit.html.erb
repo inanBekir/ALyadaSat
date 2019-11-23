@@ -11,7 +11,7 @@
     <%= link_to 'Mesajlar', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post , :class=>"list-group-item" %>
   <% end %>
    <% end %>
-    <a href="/users/edit" class="list-group-item">Üyeliğimi Güncelle</a>
+    <a href="/users/edit" class="list-group-item bg-secondary disabled">Üyeliğimi Güncelle</a>
   </div>
   </div>
   <div class="col-lg-8 col-md-7 col-sm-8">
