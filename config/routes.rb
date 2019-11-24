@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   end
   devise_scope :product do
     get "products/isonsell"=> "products/isonsell", :as => "isonsell_product"
+    get "products/markassell"=> "products/markassell", :as => "markassell_product"
+    get "products/sellingnow"=> "products/sellingnow", :as => "sellingnow_product"
+    get "products/reactive"=> "products/reactive", :as => "reactive_product"
   end
   resources :products
 

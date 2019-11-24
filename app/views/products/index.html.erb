@@ -3,6 +3,7 @@
   <div class="product-container">
    <div id="row-products" class="row">
     <% @products.each do |product| %>
+     <% if product.isonsell == true%>
      <div class="col-md-6 col-lg-4">
     <div class="card" style="width: 18rem;">
        <%= link_to(image_tag(product.photo.url(:medium), :class=>"img-slider"), product) %>
@@ -40,6 +41,7 @@
       </div>
       </div>
     <% end %>
+     <% end %>
     </div> 
    </div> 
 <br>

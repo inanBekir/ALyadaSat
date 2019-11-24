@@ -3,8 +3,8 @@
   <div class="col-lg-4 col-md-5 col-sm-4">
     <div class="list-group">
     <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
-    <a href="" class="list-group-item bg-secondary disabled">Satışta Olanlar</a>
-    <a href="/products/sellingnow" class="list-group-item">Satılanlar</a>
+    <a href="/products/isonsell" class="list-group-item">Satışta Olanlar</a>
+    <a href="" class="list-group-item bg-secondary disabled">Satılanlar</a>
     <% @users.each do |user| %>
      <% if user.id == current_user.id%>
      <%= link_to 'Favorilerim', favorites_index_path , :class=>"list-group-item" %>
@@ -15,14 +15,14 @@
   </div>
   </div>
   <% @product.each do |p| %>
-  <% if p.isonsell == true %>
+  <% if p.isonsell == false %>
     <div class="col-lg-4 col-md-7 col-sm-8">
     <div class="card" style="width: 18rem;">
    <%= link_to(image_tag(p.photo.url(:medium), :class=>"img-slider"), p) %>
   <div class="card-body">
     <h5 class="card-title"><%= p.pname%></h5>
     <p class="card-text"><%= p.pdescription%></p>
-    <%= link_to "Satıldı olarak işaretle", {:controller => "products", :action => "markassell", :id => p.id}, :class=>"btn btn-warning" %>
+    <%= link_to "Tekrar sat", {:controller => "products", :action => "reactive", :id => p.id}, :class=>"btn btn-warning" %>
   </div>
 </div>
 </div> 

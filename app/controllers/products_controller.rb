@@ -17,11 +17,42 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def reactive
+    @product = Product.find(params[:id])
+    @product.update_attribute(:isonsell, @product.isonsell = true)
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to isonsell_product_path, notice: 'Ürün tekrar aktif edildi' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def sellingnow
+    @users = User.all
+    @product = Product.where(isonsell: false , user_id: current_user)
+  end
+
   def isonsell
     @users = User.all
     @product = Product.where(isonsell: true , user_id: current_user)
-  
-   
+  end
+
+  def markassell
+      @product = Product.find(params[:id])
+      @product.update_attribute(:isonsell, @product.isonsell = false)
+      respond_to do |format|
+        if @product.save
+          format.html { redirect_to isonsell_product_path, notice: 'Ürün satıldı olarak değiştirildi.' }
+          format.json { render :show, status: :created, location: @product }
+        else
+          format.html { render :new }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
+      end
   end
   # GET /products/new
   def new
