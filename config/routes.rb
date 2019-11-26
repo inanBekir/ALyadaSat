@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get "products/markassell"=> "products/markassell", :as => "markassell_product"
     get "products/sellingnow"=> "products/sellingnow", :as => "sellingnow_product"
     get "products/reactive"=> "products/reactive", :as => "reactive_product"
-  end
+    end
   resources :products
 
   root 'products#index'

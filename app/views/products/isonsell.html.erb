@@ -3,8 +3,8 @@
   <div class="col-lg-4 col-md-5 col-sm-4">
     <div class="list-group">
     <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
-    <a href="" class="list-group-item bg-secondary disabled">Satışta Olanlar</a>
-    <a href="/products/sellingnow" class="list-group-item">Satılanlar</a>
+    <a href="" class="list-group-item bg-secondary disabled">Satışta Olanlar<span class="badge badge-warning float-right"><%= current_user.psellingcount %></span></a>
+    <a href="/products/sellingnow" class="list-group-item">Satılanlar<span class="badge badge-warning float-right"><%= current_user.psoldedcount %></span></a>
     <% @users.each do |user| %>
      <% if user.id == current_user.id%>
      <%= link_to 'Favorilerim', favorites_index_path , :class=>"list-group-item" %>
