@@ -1,6 +1,5 @@
-<div>
 <% if user_signed_in? %>
-  <div class="container container-show">
+  <div class="container">
     <div class="row">
     <div class="col-xs-12 col-md-6">
       <div class="bd-example">
@@ -65,16 +64,16 @@
     </div>
 
       <div class="btn-group" role="group" aria-label="Basic example">
+        <% if current_user.id == @product.user_id%>
         <%= link_to edit_product_path(@product), :class=>"btn btn-success" do %>
             <i class="fas fa-edit" style="font-size: 32px;"></i>
         <% end %>
-        <%= link_to products_path, :class=>"btn btn-success" do %>
-            <i class="fas fa-arrow-alt-circle-left" style="font-size: 32px;"></i>
-        <% end %>
-      <% if current_user.id == @product.user_id%>
        <%= link_to @product, method: :delete, data: { confirm: 'Bu ürünü kaldırmak istediğinize emin misiniz?' } ,:class=>"btn btn-success" do %>
         <i class="fas fa-trash-alt" style="font-size: 32px;"></i>
        <% end %>
+        <% end %>
+         <%= link_to products_path, :class=>"btn btn-success" do %>
+            <i class="fas fa-arrow-alt-circle-left" style="font-size: 32px;"></i>
         <% end %>
       </div>
       </div>
@@ -83,5 +82,4 @@
   </div>
    <% else %>
    <p>Hello World</p>
-   <% end %>  
-</div>  
+   <% end %>

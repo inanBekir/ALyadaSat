@@ -7,7 +7,10 @@
     <a href="" class="list-group-item bg-secondary disabled">Satılanlar <span class="badge badge-warning float-right"><%= current_user.psoldedcount %></span></a>
     <% @users.each do |user| %>
      <% if user.id == current_user.id%>
-     <%= link_to 'Favorilerim', favorites_index_path , :class=>"list-group-item" %>
+       <%= link_to favorites_index_path , :class=>"list-group-item" do %>
+      Favorilerim
+      <span class="badge badge-warning float-right"><%= current_user.pfavoritescount %></span>
+     <% end %>
     <%= link_to 'Mesajlar', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post , :class=>"list-group-item" %>
   <% end %>
    <% end %>
