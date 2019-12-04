@@ -44,6 +44,8 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 
+gem 'figaro'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
