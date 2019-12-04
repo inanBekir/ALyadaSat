@@ -3,11 +3,14 @@
   <div class="col-lg-4 col-md-5 col-sm-4">
     <div class="list-group">
     <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
-    <a href="" class="list-group-item">Satışta Olanlar</a>
-    <a href="" class="list-group-item">Satılanlar</a>
+    <a href="/products/isonsell" class="list-group-item">Satışta Olanlar<span class="badge badge-warning float-right"><%= current_user.psellingcount %></span></a>
+    <a href="/products/sellingnow" class="list-group-item">Satılanlar <span class="badge badge-warning float-right"><%= current_user.psoldedcount %></span></a>
     <% @users.each do |user| %>
      <% if user.id == current_user.id%>
-     <%= link_to 'Favorilerim', favorites_index_path , :class=>"list-group-item" %>
+      <%= link_to favorites_index_path , :class=>"list-group-item" do %>
+      Favorilerim
+      <span class="badge badge-warning float-right"><%= current_user.pfavoritescount %></span>
+     <% end %>
     <%= link_to 'Mesajlar', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post , :class=>"list-group-item" %>
   <% end %>
    <% end %>

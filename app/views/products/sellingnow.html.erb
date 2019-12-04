@@ -4,10 +4,10 @@
     <div class="list-group">
     <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
     <a href="/products/isonsell" class="list-group-item">Satışta Olanlar<span class="badge badge-warning float-right"><%= current_user.psellingcount %></span></a>
-    <a href="/products/sellingnow" class="list-group-item">Satılanlar <span class="badge badge-warning float-right"><%= current_user.psoldedcount %></span></a>
+    <a href="" class="list-group-item bg-secondary disabled">Satılanlar <span class="badge badge-warning float-right"><%= current_user.psoldedcount %></span></a>
     <% @users.each do |user| %>
      <% if user.id == current_user.id%>
-     <%= link_to favorites_index_path , :class=>"list-group-item bg-secondary disabled" do %>
+       <%= link_to favorites_index_path , :class=>"list-group-item" do %>
       Favorilerim
       <span class="badge badge-warning float-right"><%= current_user.pfavoritescount %></span>
      <% end %>
@@ -17,17 +17,19 @@
     <a href="/users/edit" class="list-group-item">Üyeliğimi Güncelle</a>
   </div>
   </div>
-  <%= current_user.favorites.each do |favorite|%>
-  <div class="col-lg-4 col-md-7 col-sm-8">
+  <% @product.each do |p| %>
+  <% if p.isonsell == false %>
+    <div class="col-lg-4 col-md-7 col-sm-8">
     <div class="card" style="width: 18rem;">
-   <%= link_to(image_tag(favorite.product.photo.url(:medium), :class=>"img-slider"), favorite.product) %>
+   <%= link_to(image_tag(p.photo.url(:medium), :class=>"img-slider"), p) %>
   <div class="card-body">
-    <h5 class="card-title"><%= favorite.product.pname%></h5>
-    <p class="card-text"><%= favorite.product.pdescription%></p>
-    <%= link_to favorite.product.pprice, favorite.product%>
+    <h5 class="card-title"><%= p.pname%></h5>
+    <p class="card-text"><%= p.pdescription%></p>
+    <%= link_to "Tekrar sat", {:controller => "products", :action => "reactive", :id => p.id}, :class=>"btn btn-warning" %>
   </div>
 </div>
-    </div> 
-     <% end %>
+</div> 
+  <% end %> 
+   <% end %>
    </div> 
    </div> 

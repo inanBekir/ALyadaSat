@@ -17,11 +17,50 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def sellingnow
+    @users = User.all
+    @product = Product.where(isonsell: false , user_id: current_user)
+  end
+
   def isonsell
     @users = User.all
     @product = Product.where(isonsell: true , user_id: current_user)
-  
-   
+  end
+
+  def reactive
+    @product = Product.find(params[:id])
+    @product.update_attribute(:isonsell, @product.isonsell = true)
+    @counter=current_user.psellingcount+1
+    @counter2=current_user.psoldedcount-1
+    current_user.update_attribute(:psellingcount, current_user.psellingcount = @counter )
+    current_user.update_attribute(:psoldedcount, current_user.psoldedcount = @counter2 )  
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to sellingnow_product_path, notice: 'Ürün tekrar aktif edildi' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def markassell
+      @product = Product.find(params[:id])
+      @product.update_attribute(:isonsell, @product.isonsell = false)
+      @counter=current_user.psoldedcount+1
+      @counter2=current_user.psellingcount-1
+      current_user.update_attribute(:psoldedcount, current_user.psoldedcount = @counter)
+      current_user.update_attribute(:psellingcount, current_user.psellingcount = @counter2)
+      respond_to do |format|
+        if @product.save
+          format.html { redirect_to isonsell_product_path, notice: 'Ürün satıldı olarak değiştirildi.' }
+          format.json { render :show, status: :created, location: @product }
+        else
+          format.html { render :new }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
+      end
   end
   # GET /products/new
   def new
@@ -37,7 +76,8 @@ class ProductsController < ApplicationController
   def create
     attributes = product_params.merge(user_id: current_user.id)
     @product = Product.new(attributes)
-
+    @counter=current_user.psellingcount+1
+    current_user.update_attribute(:psellingcount, current_user.psellingcount = @counter)
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }

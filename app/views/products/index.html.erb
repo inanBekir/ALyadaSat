@@ -1,8 +1,8 @@
 <div class="container">
 <%= content_tag(:div, content_tag(:p), class: "favori-alert", id:'favorite_link', remote: true) %>
-  <div class="product-container">
    <div id="row-products" class="row">
     <% @products.each do |product| %>
+     <% if product.isonsell == true%>
      <div class="col-md-6 col-lg-4">
     <div class="card" style="width: 18rem;">
        <%= link_to(image_tag(product.photo.url(:medium), :class=>"img-slider"), product) %>
@@ -40,7 +40,7 @@
       </div>
       </div>
     <% end %>
+     <% end %>
     </div> 
-   </div> 
 <br>
 </div>
