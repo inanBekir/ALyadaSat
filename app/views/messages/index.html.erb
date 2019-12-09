@@ -67,7 +67,7 @@
               <div class="incoming_msg_img"> <%= image_tag(current_user.avatar.url(:thumb), border: 0,:class=>"avatar")%> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
-                  <p></p>
+                  <p><%= message.body %></p>
                   <span class="time_date"> </span></div>
               </div>
             </div>
