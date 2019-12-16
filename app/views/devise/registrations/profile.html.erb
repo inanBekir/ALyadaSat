@@ -4,7 +4,7 @@
     <div class="list-group">
     <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
     <a href="/products/isonsell" class="list-group-item">Satışta Olanlar<span class="badge badge-warning float-right"><%= current_user.psellingcount %></span></a>
-    <a href="" class="list-group-item">Satılanlar <span class="badge badge-warning float-right"><%= current_user.psoldedcount %></span></a>
+    <a href="/products/sellingnow" class="list-group-item">Satılanlar <span class="badge badge-warning float-right"><%= current_user.psoldedcount %></span></a>
     <% @users.each do |user| %>
      <% if user.id == current_user.id%>
      <%= link_to favorites_index_path , :class=>"list-group-item" do %>
@@ -84,7 +84,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
+                                                <p> <%= current_user.username %></p>
                                             </div>
                                         </div>
                                         <div class="row">

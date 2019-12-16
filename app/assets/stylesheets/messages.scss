@@ -105,8 +105,14 @@ img {
 }
 
 .incoming_msg_img {
-  display: inline-block;
+  display: inline-flex;
   width: 6%;
+}
+.outgoing_msg_img {
+  display: block;
+  width: 12%;
+  float: right;
+  padding-left: 10px;
 }
 .received_msg {
   display: inline-block;
@@ -183,9 +189,13 @@ img {
 }
 .messaging {
   padding: 0 0 50px 0;
-  margin-top: 6.5%;
 }
 .msg_history {
   height: 516px;
   overflow-y: auto;
+}
+.msg_inbox_link{
+  display: block;
+  height: 50px;
+  padding-top: 5%;
 }

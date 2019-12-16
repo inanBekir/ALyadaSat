@@ -16,20 +16,6 @@
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
-      <div class="carousel-item">
-        <%= image_tag @product.photo.url(:medium), :class=>"d-block w-100" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag @product.photo.url(:medium), :class=>"d-block w-100" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div>
-      </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -48,23 +34,22 @@
       <%= form_with model: @product, :html => { :multipart => true } do |form| %>
             <p>
                 <%= form.label :"Ürün Başlığı:" %>
-                <%= form.text_field :pname ,:class=>"autocomplete form-control"%>
+                <%= form.text_field :pname ,:class=>"autocomplete form-control", :required => true%>
                 
             </p>
             <p>
                 <%= form.label :"Ürün Açıklama:" %>
-                <%= form.text_field :pdescription,:class=>"autocomplete form-control" %>
+                <%= form.text_area :pdescription,:class=>"autocomplete form-control", :required => true, :rows => 4 %>
                 
             </p>
             <p>
                 <%= form.label :"Ürün Fiyatı:" %>
-                <span id="product-price-lab"><%= form.text_field :pprice ,:id=>"product-price-label",:class=>"autocomplete form-control"%>
+                <span id="product-price-lab"><%= form.number_field :pprice ,:id=>"product-price-label",:class=>"autocomplete form-control", :required => true%>
                 <img id="turkish-coin-icon" src="https://image.flaticon.com/icons/svg/12/12037.svg" width="25" height="25" alt="Turkish Lira free icon" title="Turkish Lira free icon">
-                </span>
-                                
+                </span>              
             </p>
              <p>
-                <%= form.file_field :photo %>
+                <%= form.file_field :photo , :required => true%>
             </p>
              <div class="btn-group" role="group" aria-label="Basic example">
         <%= button_tag 'submit', :class=> "btn btn-success" do %>
