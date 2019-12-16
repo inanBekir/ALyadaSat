@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.order('updated_at DESC')
     if user_signed_in?
     @users = User.where.not(id: current_user.id)
     @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
@@ -107,6 +107,8 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
+    @counter=current_user.psellingcount-1
+    current_user.update_attribute(:psellingcount, current_user.psellingcount = @counter)
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
