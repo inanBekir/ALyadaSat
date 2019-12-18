@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(version: 2019_11_09_165741) do
     t.integer "pfavoritescount", default: 0
     t.integer "psoldedcount", default: 0
     t.integer "psellingcount", default: 0
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar_file_name"
