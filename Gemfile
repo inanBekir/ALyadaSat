@@ -46,6 +46,10 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 
 gem 'figaro'
 
+gem 'elasticsearch-model', git: 'git://github.com/elastic/elasticsearch-rails.git', branch: 'master'
+gem 'elasticsearch-rails', git: 'git://github.com/elastic/elasticsearch-rails.git', branch: 'master'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
