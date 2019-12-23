@@ -14,7 +14,13 @@ Rails.application.routes.draw do
     get "products/sellingnow"=> "products/sellingnow", :as => "sellingnow_product"
     get "products/reactive"=> "products/reactive", :as => "reactive_product"
     end
-  resources :products
+  #resources :products
+
+  resources :products do
+    collection do
+      get :search
+    end
+  end  
 
   root 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
