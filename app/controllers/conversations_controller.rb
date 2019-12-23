@@ -1,8 +1,10 @@
 class ConversationsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   def index
-    @conversations = Conversation.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
-    @users = User.where.not(id: current_user.id)
+      @users = User.where.not(id: current_user.id)
+      @conversations = Conversation.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
+
+      respond_to :html, :json
   end
   def create
     if Conversation.between(params[:sender_id], params[:receiver_id]).present?

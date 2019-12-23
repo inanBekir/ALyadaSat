@@ -48,7 +48,7 @@ gem 'figaro'
 
 gem 'execjs'
 
-gem 'therubyracer', :platforms => :ruby
+gem 'mini_racer', :platforms => :ruby
 
 
 group :development, :test do
