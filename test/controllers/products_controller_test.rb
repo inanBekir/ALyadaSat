@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
     @product = products(:one)
   end
@@ -10,14 +11,9 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_product_url
-    assert_response :success
-  end
-
   test "should create product" do
     assert_difference('Product.count') do
-      post products_url, params: { product: { pdescription: @product.pdescription, pimage: @product.pimage, plocation: @product.plocation, pname: @product.pname, pprice: @product.pprice } }
+      post products_url, params: { product: { pdescription: @product.pdescription, pname: @product.pname, pprice: @product.pprice, pfavorites: @product.pfavorites, isonsell: @product.isonsell } }
     end
 
     assert_redirected_to product_url(Product.last)
@@ -34,7 +30,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update product" do
-    patch product_url(@product), params: { product: { pdescription: @product.pdescription, pimage: @product.pimage, plocation: @product.plocation, pname: @product.pname, pprice: @product.pprice } }
+    patch product_url(@product), params: { product: { pdescription: @product.pdescription, plocation: @product.plocation, pname: @product.pname, pprice: @product.pprice } }
     assert_redirected_to product_url(@product)
   end
 
