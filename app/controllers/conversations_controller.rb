@@ -3,8 +3,6 @@ class ConversationsController < ApplicationController
   def index
       @users = User.where.not(id: current_user.id)
       @conversations = Conversation.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
-
-      respond_to :html, :json
   end
   def create
     if Conversation.between(params[:sender_id], params[:receiver_id]).present?
