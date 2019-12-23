@@ -1,0 +1,34 @@
+<div class = "container">
+    <div class = "row-product">
+    <h1>Elastic search for products</h1>
+    <% unless @products.nil? %>
+    <% if @products.empty? %>
+        <h2>No products found matching your query.</h2>
+    <% else %>
+        <h2>Search results</h2>
+
+        <table style="width: 100%;">
+        <thead>
+            <tr>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Tags</th>
+            <th>Published on</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @products.each do |product| %>
+            <tr>
+                <td><%= product.pname %></td>
+                <td><%= product.pdescription %></td>
+                <td><%= link_to 'View', product_path(product.id) %></td>
+            </tr>
+            <% end %>
+        <tbody>
+        </table>
+    <% end %>
+    <% end %>
+    </div>
+</div>
