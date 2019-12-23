@@ -2,7 +2,7 @@ require 'test_helper'
 
 class FavoritesControllerTest < ActionDispatch::IntegrationTest
   test "should get update" do
-    get favorites_update_url
+    get new_user_session_path
     assert_response :success
   end
 

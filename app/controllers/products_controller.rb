@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
     @users = User.where.not(id: current_user.id)
     @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
     end
-
   end
 
   # GET /products/1
@@ -94,7 +93,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to @product, notice: 'Ürün güncellendi.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -107,8 +106,14 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
-    @counter=current_user.psellingcount-1
-    current_user.update_attribute(:psellingcount, current_user.psellingcount = @counter)
+    if current_user.psellingcount > 0
+      @counter=current_user.psellingcount-1
+      current_user.update_attribute(:psellingcount, current_user.psellingcount = @counter)
+    end
+    if current_user.psoldedcount > 0
+      @counter2=current_user.psoldedcount-1
+      current_user.update_attribute(:psoldedcount, current_user.psoldedcount = @counter2)
+    end
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
@@ -132,6 +137,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:pname, :pdescription, :pprice, :pimage, :plocation, :photo,:isonsell, :user_id)
+      params.require(:product).permit(:pname, :pdescription, :pprice, :plocation, :photo,:isonsell, :user_id)
     end
 end

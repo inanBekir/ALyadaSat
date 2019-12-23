@@ -6,7 +6,6 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :pprice
       t.boolean :pfavorites, default: false
       t.boolean :isonsell, default: true
-      t.string :plocation
 
       t.timestamps
     end

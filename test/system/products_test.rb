@@ -15,8 +15,6 @@ class ProductsTest < ApplicationSystemTestCase
     click_on "New Product"
 
     fill_in "Pdescription", with: @product.pdescription
-    fill_in "Pimage", with: @product.pimage
-    fill_in "Plocation", with: @product.plocation
     fill_in "Pname", with: @product.pname
     fill_in "Pprice", with: @product.pprice
     click_on "Create Product"
@@ -30,8 +28,6 @@ class ProductsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Pdescription", with: @product.pdescription
-    fill_in "Pimage", with: @product.pimage
-    fill_in "Plocation", with: @product.plocation
     fill_in "Pname", with: @product.pname
     fill_in "Pprice", with: @product.pprice
     click_on "Update Product"

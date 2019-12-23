@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_165741) do
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string "username"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    #t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

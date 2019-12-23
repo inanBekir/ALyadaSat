@@ -4,12 +4,8 @@ one:
   pname: MyString
   pdescription: MyString
   pprice: 1
-  pimage: MyString
-  plocation: MyString
 
 two:
   pname: MyString
   pdescription: MyString
   pprice: 1
-  pimage: MyString
-  plocation: MyString
