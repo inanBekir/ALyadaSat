@@ -17,13 +17,3 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
-$(document).ready(function(){
-    $('.pop').popover({
-      container: 'body',
-      html:true,
-      title: '<span class="text-info">Exported Files</span>' +
-      '<button type="button" id="close" class="close" onclick="$(&quot;.pop&quot;).popover(&quot;hide&quot;);">&times;</button>',
-      placement: 'top'
-    })
-    
-  })

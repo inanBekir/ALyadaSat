@@ -24,8 +24,12 @@
         <% end %>
         </div>
         <div id="btn-group" class="btn-group mr-4 pl-1" role="group" aria-label="Second group">
-          <button type="button" class="btn btn-sm btn-success pop" data-toggle="popover" data-content="<a href='https://www.facebook.com/' title='test add link'>link on content</a>"><i class="fas fa-share-square" style="font-size: 32px;"></i></button>
-        </div>
+          <%= content_tag(:a,:'class' => 'btn btn-sm btn-success pop', :'data-toggle' => 'popover',
+                          :'data-content' => content_tag(:input,nil,readonly: true, id: "link-input",
+                          :value => ('http://localhost:3000/'+product_path(product.id)))+('<button id="share-copy-button" class="btn btn-primary" onclick="copyToClipboard()">Kopyala</button>')) do %>
+            <i class="fas fa-share-square" style="font-size: 32px;"></i>
+          <%end%>
+          </div>
         <div id="btn-group" class="btn-group pl-1" role="group" aria-label="Third group">
         <% if user_signed_in? %>
           <% @users.each do |user| %>
@@ -51,3 +55,19 @@
     </div> 
 <br>
 </div>
+<script>
+$(document).ready(function(){
+    $('.pop').popover({
+      container: 'body',
+      html:true,
+      title: '<span class="text-info">Share</span>' +
+      '<button type="button" id="close" class="close" onclick="$(&quot;.pop&quot;).popover(&quot;hide&quot;);">&times;</button>',
+      placement: 'top'
+    });
+  });
+  function copyToClipboard() {
+    var textBox = document.getElementById("link-input");
+    textBox.select();
+    document.execCommand("copy");
+    }
+</script>
