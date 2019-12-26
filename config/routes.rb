@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'favorites/index'
   get 'messages/index'
   get 'conversations/index'
-  devise_for :users, :controllers => { :registrations => 'users/registrations' }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",:registrations => 'users/registrations' }
   devise_scope :user do
     get "users/profile"=> "users/registrations#profile", :as => "profile_registration"
   end
