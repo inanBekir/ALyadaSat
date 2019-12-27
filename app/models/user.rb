@@ -29,13 +29,14 @@ def self.new_with_session(params, session)
     end
   end
 end
-
 def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
-    user.username = auth.info.name   # assuming the user model has a name
-    user.avatar_file_name = auth.info.image # assuming the user model has an image
+    user.username = auth.info.name
+    user.avatar_file_name = URI.parse(auth.info.image)
+    user.oauth_token = auth.credentials.token
+    user.oauth_expires_at = Time.at(auth.credentials.expires_at)
     user.skip_confirmation!
   end
 end
