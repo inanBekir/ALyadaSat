@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get "products/reactive"=> "products/reactive", :as => "reactive_product"
     end
   #resources :products
-
+  resources :charges
   resources :products do
     collection do
       get :search
