@@ -68,18 +68,15 @@
         <% end %>
         </div>
       <% end %>
-      <%= form_tag charges_path(@product,:type => (@product.pprice*100)) do %>
+      <div class="btn-group" role="group" aria-label="Basic example">
+       <%= form_tag charges_path(@product,:type => (@product.pprice*100)) do %>
         <article>
           <% if flash[:error].present? %>
             <div id="error_explanation">
               <p><%= flash[:error] %></p>
             </div>
           <% end %>
-          <label class="amount">
-            <span>Amount: ₺<%=@product.pprice*100%></span>
-          </label>
         </article>
-
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                 data-description="<%= (@product.pname) %>"
@@ -88,6 +85,7 @@
                 data-currency="try"></script>
                 
       <% end %>
+        </div>
       </div>
      </div>
     </div>
