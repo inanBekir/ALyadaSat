@@ -21,6 +21,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
    def profile
     @users = User.all
+    if params[:profile_id] != nil
+      @users2 = User.find(params[:profile_id])
+    else
+      @users2 = current_user
+    end
    end
 
   # PUT /resource
