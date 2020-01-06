@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
 
   def index
     @users = User.all
+    @users2 = User.where.not(id: current_user.id)
     @messages = @conversation.messages
 
     @messages.where("user_id != ? AND read = ?", current_user.id, false).update_all(read: true)

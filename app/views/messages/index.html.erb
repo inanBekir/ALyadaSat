@@ -4,7 +4,7 @@
     <div class="list-group">
     <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
     <a href="/products/isonsell" class="list-group-item">Satışta Olanlar<span class="badge badge-warning float-right"><%= current_user.psellingcount %></span></a>
-    <a href="" class="list-group-item">Satılanlar <span class="badge badge-warning float-right"><%= current_user.psoldedcount %></span></a>
+    <a href="/products/sellingnow" class="list-group-item">Satılanlar <span class="badge badge-warning float-right"><%= current_user.psoldedcount %></span></a>
      <% @users.each do |user| %>
      <% if user.id == current_user.id%>
      <%= link_to favorites_index_path , :class=>"list-group-item" do %>
@@ -33,19 +33,26 @@
                 </span> </div>
             </div>
           </div>
+          
           <div class="inbox_chat">
           <% @conversations.each do |conversation| %>
+          <% if conversation.sender_id != conversation.receiver_id %>
+          <% @users2.each do |user| %>
             <div class="chat_list active_chat">
               <div class="chat_people">
-                <div class="chat_img"> <%= image_tag(current_user.avatar.url(:thumb), border: 0,:class=>"avatar")%> </div>
+                <div class="chat_img"> <%= link_to image_tag(user.avatar.url, border: 0,:class=>"avatar"),profile_registration_path(profile_id: user.id)%> </div>
                 <div class="chat_ib">
-                  <%= link_to conversation.recipient(current_user).username, conversation_messages_path(conversation), :class=>"msg_inbox_link" %>
+                  <%= link_to conversation_messages_path(conversation), :class=>"msg_inbox_link",:id=>@conversation.id do %>
+                    <%= conversation.recipient(current_user).username %>
                     <% if !conversation.unread_message_count(current_user).zero? %>
                         (<%= conversation.unread_message_count(current_user) %>)
-                    <% end %> <span class="chat_date"><%=@message.created_at%></span>
+                    <% end %> 
+                    <% end %> 
                 </div>
               </div>
             </div>
+             <% end %>
+             <% end %>
              <% end %>
           </div>
         </div>
