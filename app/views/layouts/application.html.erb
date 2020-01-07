@@ -18,42 +18,41 @@
 
   <body>
   <nav id="navbar" class="navbar navbar-expand-lg navbar-dark" style="background-color: #211D1D;">
-  
     <a class="navbar-brand" href="/"><img class="home-logo" src="/assets/navbar/logo-home.png"></a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <%= form_for :search_products, url: search_products_path, method: :get do |form| %>
-          <%= form.text_field :query, value: params[:search_products].presence && params[:search_products][:query] %>
-          <%= form.submit 'Search' %>
-        <% end %>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-                <span id="product-sell-button"><%= link_to 'Ürün Sat', new_product_path, :class=>"btn btn-outline-warning my-2 my-sm-0" %></span>
-            <% if user_signed_in? %>
-              <%= link_to 'Çıkış Yap', destroy_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0", method: :delete %>
-              <%= link_to image_tag(current_user.avatar.url(:thumb), border: 0,:class=>"avatar"), profile_registration_path ,:class=>"avatar" %>
-            <% else %>
-              <%= link_to 'Giriş Yap', new_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
-              <%= link_to 'Kayıt Ol', new_user_registration_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
-            <% end %>  
-    </form>
-  </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <%= form_for :search_products, url: search_products_path, :html => {:class => 'header-search-form'}, method: :get do |form| %>
+            <%= form.text_field :query, value: params[:search_products].presence && params[:search_products][:query] %>
+            <%= form.submit 'Search' %>
+          <% end %>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+                  <span id="product-sell-button"><%= link_to 'Ürün Sat', new_product_path, :class=>"btn btn-outline-warning my-2 my-sm-0" %></span>
+              <% if user_signed_in? %>
+                <%= link_to 'Çıkış Yap', destroy_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0", method: :delete %>
+                <%= link_to image_tag(current_user.avatar.url(:thumb), border: 0,:class=>"avatar"), profile_registration_path ,:class=>"avatar" %>
+              <% else %>
+                <%= link_to 'Giriş Yap', new_user_session_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
+                <%= link_to 'Kayıt Ol', new_user_registration_path,:class=>"btn btn-outline-success my-2 my-sm-0" %>
+              <% end %>  
+      </form>
+    </div>
 </nav>
 
       <%if notice %><div class="alert alert-info"><%= notice %></div><% end %>
