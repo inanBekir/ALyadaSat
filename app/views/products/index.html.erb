@@ -1,58 +1,94 @@
 <div class="container">
 <%= content_tag(:div, content_tag(:p), class: "favori-alert", id:'favorite_link', remote: true) %>
-   <div id="row-products" class="row">
-    <% @products.each do |product| %>
-     <% if product.isonsell == true%>
-     <div class="col-md-6 col-lg-4">
-    <div class="card" style="width: 18rem;">
-       <%= link_to(image_tag(product.photo.url(:medium), :class=>"img-slider"), product_path(product)) %>
-      <div class="card-body">
-        <h5 class="card-title"><%= product.pname %></h5>
-        <p class="card-text"><%= product.pdescription %></p>
-        <p class="card-price"><%= product.pprice %><img id="turkish-coin-icon" src="https://image.flaticon.com/icons/svg/12/12037.svg" width="15" height="25" alt="Turkish Lira free icon" title="Turkish Lira free icon"></p>
-       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div id="btn-group" class="btn-group mr-4" role="group" aria-label="First group">
-         <% if user_signed_in? %>
-          <% @users.each do |user| %>
-          <% if user.id == product.user_id%>
-            <%= link_to favorites_update_path(product: product), :class=>"btn btn-sm btn-success", remote: true do %>
-            <i class="fas fa-heart" style="font-size: 32px;"></i>
-            <% end %>
-           <% end %>
-          <% end %>
-        <% end %>
-        </div>
-        <div id="btn-group" class="btn-group mr-4 pl-1" role="group" aria-label="Second group">
-          <%= content_tag(:a,:'class' => 'btn btn-sm btn-success pop', :'data-toggle' => 'popover',
+<div class="products">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3">
+						<div class="section_title text-center">Popular on Little Closet</div>
+					</div>
+				</div>
+				<div class="row page_nav_row">
+					<div class="col">
+						<div class="page_nav">
+							<ul class="d-flex flex-row align-items-start justify-content-center">
+								<li class="active"><a href="category.html">Women</a></li>
+								<li><a href="category.html">Men</a></li>
+								<li><a href="category.html">Kids</a></li>
+								<li><a href="category.html">Home Deco</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row products_row">
+				<% @products.each do |product| %>
+          <% if product.isonsell == true%>
+					<div class="col-xl-4 col-md-6">
+						<div class="product">
+							<div class="product_image"><%= link_to(image_tag(product.photo.url(:medium), :class=>"img-slider"), product_path(product)) %></div>
+							<div class="product_content">
+								<div class="product_info d-flex flex-row align-items-start justify-content-start">
+									<div>
+										<div>
+											<div class="product_name"><a href="product.html"><%= product.pname %></a></div>
+											<div class="product_category"><%= product.pdescription %></div>
+										</div>
+									</div>
+									<div class="ml-auto text-right">
+										<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+										<div class="product_price text-right"><%= product.pprice %><img id="turkish-coin-icon" src="https://image.flaticon.com/icons/svg/12/12037.svg" width="15" height="25" alt="Turkish Lira free icon" title="Turkish Lira free icon"></div>
+									</div>
+								</div>
+								<div class="product_buttons">
+									<div class="text-right d-flex flex-row align-items-start justify-content-start">
+										<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+											<div><div>
+                      <% if user_signed_in? %>
+                        <% @users.each do |user| %>
+                        <% if user.id == product.user_id%>
+                        <%= link_to conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post do %>
+                          <i class="fas fa-comments" style="font-size: 32px;"></i>
+                          <% end %>
+                        <% end %>
+                        <% end %>
+                      <% else %>
+                      <%= link_to new_user_session_path, :class=>"btn btn-sm btn-success" do %>
+                          <i class="fas fa-comments" style="font-size: 32px;"></i>
+                      <% end %>
+                      <% end %><div>+</div></div></div>
+										</div>
+                    <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+											<div><div><%= content_tag(:a,:'class' => 'pop', :'data-toggle' => 'popover',
                           :'data-content' => content_tag(:input,nil,readonly: true, id: "link-input",
                           :value => ('http://localhost:3000/'+product_path(product.id)))+('<button id="share-copy-button" class="btn btn-primary" onclick="copyToClipboard()">Kopyala</button>')) do %>
-            <i class="fas fa-share-square" style="font-size: 32px;"></i>
-          <%end%>
-          </div>
-        <div id="btn-group" class="btn-group pl-1" role="group" aria-label="Third group">
-        <% if user_signed_in? %>
-          <% @users.each do |user| %>
-          <% if user.id == product.user_id%>
-           <%= link_to conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post, :class=>"btn btn-sm btn-success" do %>
-            <i class="fas fa-comments" style="font-size: 32px;"></i>
-            <% end %>
+                            <i class="fas fa-share-square" style="font-size: 32px;"></i>
+                          <%end%><div>+</div></div></div>
+										</div>
+										<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+											<div><div> <% if user_signed_in? %>
+                        <% @users.each do |user| %>
+                        <% if user.id == product.user_id%>
+                          <%= link_to favorites_update_path(product: product), remote: true do %>
+                          <i class="fas fa-heart" style="font-size: 32px;"></i>
+                          <% end %>
+                        <% end %>
+                        <% end %>
+                      <% end %><div>+</div></div></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
           <% end %>
-          <% end %>
-        <% else %>
-        <%= link_to new_user_session_path, :class=>"btn btn-sm btn-success" do %>
-            <i class="fas fa-comments" style="font-size: 32px;"></i>
         <% end %>
-        <% end %>
-        </div>
-        
-      </div>
-      </div>
-      </div>
-      </div>
-    <% end %>
-     <% end %>
-    </div> 
-<br>
+				</div>
+				<div class="row load_more_row">
+					<div class="col">
+						<div class="button load_more ml-auto mr-auto"><a href="#">load more</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
 </div>
 <script>
 $(document).ready(function(){
