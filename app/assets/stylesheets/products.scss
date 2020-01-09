@@ -24,6 +24,25 @@
   height: 30px;
   padding: 0px;
 }
+.fav-icon-button {
+	padding: 0.25rem;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	border-radius: 0.25rem;
+	width: 45px;
+	height: 45px;
+  }
+  .share-icon-button {
+	padding: 0.25rem;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	border-radius: 0.25rem;
+	width: 45px;
+	height: 45px;
+  }
+a:not([href]) {
+	cursor:pointer;
+} 
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
 @font-face
@@ -118,24 +137,6 @@ p a:hover::after
 {
 	background: rgba(188,155,155,0.6);
 	color: #FFFFFF;
-}
-
-h1{font-size: 48px;}
-h2{font-size: 36px;}
-h3{font-size: 24px;}
-h4{font-size: 18px;}
-h5{font-size: 14px;}
-h1, h2, h3, h4, h5, h6
-{
-	font-family: 'Roboto', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
-	text-shadow: rgba(0,0,0,.01) 0 0 1px;
-	line-height: 1.2;
-}
-img
-{
-	max-width: 100%;
 }
 button:active
 {
@@ -415,7 +416,7 @@ section
 	padding-top: 18px;
 	padding-bottom: 10px;
 }
-.product_name
+.product_name_product
 {
 	max-width: 175px;
 }
@@ -485,7 +486,7 @@ section
 .rating_r_5 i:nth-child(3)::before{content: "\f005";}
 .rating_r_5 i:nth-child(4)::before{content: "\f005";}
 .rating_r_5 i:nth-child(5)::before{content: "\f005";}
-.product_price
+.product_price_product
 {
 	font-size: 30px;
 	color: #4a4a4a;
@@ -551,10 +552,6 @@ section
 .home_item_large .product_buttons > div > div:first-of-type
 {
 	border-right: solid 1px rgba(255,255,255,0.2);
-}
-.product_button
-{
-	cursor: pointer;
 }
 .product_button > div > div
 {

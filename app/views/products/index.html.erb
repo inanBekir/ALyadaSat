@@ -29,13 +29,13 @@
 								<div class="product_info d-flex flex-row align-items-start justify-content-start">
 									<div>
 										<div>
-											<div class="product_name"><a href="product.html"><%= product.pname %></a></div>
+											<div class="product_name_product"><a href="product.html"><%= product.pname %></a></div>
 											<div class="product_category"><%= product.pdescription %></div>
 										</div>
 									</div>
 									<div class="ml-auto text-right">
 										<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-										<div class="product_price text-right"><%= product.pprice %><img id="turkish-coin-icon" src="https://image.flaticon.com/icons/svg/12/12037.svg" width="15" height="25" alt="Turkish Lira free icon" title="Turkish Lira free icon"></div>
+										<div class="product_price_product text-right"><%= product.pprice %><img id="turkish-coin-icon" src="https://image.flaticon.com/icons/svg/12/12037.svg" width="15" height="25" alt="Turkish Lira free icon" title="Turkish Lira free icon"></div>
 									</div>
 								</div>
 								<div class="product_buttons">
@@ -57,7 +57,7 @@
                       <% end %><div>+</div></div></div>
 										</div>
                     <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-											<div><div><%= content_tag(:a,:'class' => 'pop', :'data-toggle' => 'popover',
+											<div><div><%= content_tag(:a,:'class' => 'pop',:'id' => 'pop', :'data-toggle' => 'popover',
                           :'data-content' => content_tag(:input,nil,readonly: true, id: "link-input",
                           :value => ('http://localhost:3000/'+product_path(product.id)))+('<button id="share-copy-button" class="btn btn-primary" onclick="copyToClipboard()">Kopyala</button>')) do %>
                             <i class="fas fa-share-square" style="font-size: 32px;"></i>

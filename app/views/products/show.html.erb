@@ -1,74 +1,247 @@
-  <div class="container">
-    <div class="row">
-    <div class="col-xs-12 col-md-6">
-      <div class="bd-example">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <%= image_tag @product.photo.url(:medium), :class=>"d-block w-100" %>
-              <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-xs-12 col-md-6">
-      <div class="product-info">
-       <p class="product-name">
-         <strong class="product-name"><%= @product.pname %></strong>
-      </p>
-      
-      <p class="product-price">
-        <strong>
-          <%= @product.pprice %><img id="turkish-coin-icon" src="https://image.flaticon.com/icons/svg/12/12037.svg" width="25" height="25" alt="Turkish Lira free icon" title="Turkish Lira free icon"> 
-        </strong>
-      </p>
+<!-- Product -->
 
-    <div class="row">
-    <div class="col-sm">
-     <p class="product-description">
-        <%= @product.pdescription %>
-      </p>
-    </div>
-      <% if user_signed_in? %>
-        <div class="btn-group" role="group" aria-label="Basic example">
-        <% if current_user.id == @product.user_id%>
-        <%= link_to edit_product_path(@product), :class=>"btn btn-success" do %>
-            <i class="fas fa-edit" style="font-size: 32px;"></i>
-        <% end %>
-       <%= link_to @product, method: :delete, data: { confirm: 'Bu ürünü kaldırmak istediğinize emin misiniz?' } ,:class=>"btn btn-success" do %>
-        <i class="fas fa-trash-alt" style="font-size: 32px;"></i>
-       <% end %>
-        <% end %>
-         <%= link_to products_path, :class=>"btn btn-success" do %>
-            <i class="fas fa-arrow-alt-circle-left" style="font-size: 32px;"></i>
-        <% end %>
-      </div>
-      <% else %>
-      <div class="btn-group" role="group" aria-label="Basic example">
-       <%= link_to products_path, :class=>"btn btn-success" do %>
-            <i class="fas fa-arrow-alt-circle-left" style="font-size: 32px;"></i>
-        <% end %>
-        </div>
-      <% end %>
-      </div>
-     </div>
-    </div>
-  </div>
+		<div class="product_show">
+			<div class="container">
+				<div class="row">
+					
+					<!-- Product Image -->
+					<div class="col-lg-6">
+						<div class="product_image_slider_container">
+							<div id="slider" class="flexslider">
+								<ul class="slides">
+									<li>
+										 <%= image_tag @product.photo.url(:medium) %>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Product Info -->
+					<div class="col-lg-6 product_col">
+						<div class="product_info">
+							<div class="product_name"><%= @product.pname %></div>
+							<div class="product_category">In <a href="category.html">Category</a></div>
+							<div class="product_rating_container d-flex flex-row align-items-center justify-content-start">
+								<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+								<div class="product_reviews">4.7 out of (3514)</div>
+								<div class="product_reviews_link"><a href="#">Reviews</a></div>
+							</div>
+							<div class="product_price"><%= @product.pprice %><img id="turkish-coin-icon" src="https://image.flaticon.com/icons/svg/12/12037.svg" width="15" height="25" alt="Turkish Lira free icon" title="Turkish Lira free icon"></div>
+							<div class="product_size">
+								<div class="product_size_title">Select Size</div>
+								<ul class="d-flex flex-row align-items-start justify-content-start">
+									<li>
+										<input type="radio" id="radio_1" disabled name="product_radio" class="regular_radio radio_1">
+										<label for="radio_1">XS</label>
+									</li>
+									<li>
+										<input type="radio" id="radio_2" name="product_radio" class="regular_radio radio_2" checked>
+										<label for="radio_2">S</label>
+									</li>
+									<li>
+										<input type="radio" id="radio_3" name="product_radio" class="regular_radio radio_3">
+										<label for="radio_3">M</label>
+									</li>
+									<li>
+										<input type="radio" id="radio_4" name="product_radio" class="regular_radio radio_4">
+										<label for="radio_4">L</label>
+									</li>
+									<li>
+										<input type="radio" id="radio_5" name="product_radio" class="regular_radio radio_5">
+										<label for="radio_5">XL</label>
+									</li>
+									<li>
+										<input type="radio" id="radio_6" disabled name="product_radio" class="regular_radio radio_6">
+										<label for="radio_6">XXL</label>
+									</li>
+								</ul>
+							</div>
+							<div class="product_text">
+								<p><%= @product.pdescription %></p>
+							</div>
+							<div class="product_buttons">
+								<div class="text-right d-flex flex-row align-items-start justify-content-start">
+									<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+										<div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
+									</div>
+									<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+										<div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" >
+				<div class="col-lg-9 product_col">
+				<div class="product-tab">
+                        <div class="tab-item">
+                            <ul class="nav" role="tablist">
+                                <li>
+                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab">DESCRIPTION</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-item-content">
+                            <div class="tab-content">
+                                <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
+                                    <div class="product-content">
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <h5>Introduction</h5>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
+                                                <h5>Features</h5>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <img src="img/product-single/tab-desc.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-2" role="tabpanel">
+                                    <div class="specification-table">
+                                        <table>
+                                            <tr>
+                                                <td class="p-catagory">Customer Rating</td>
+                                                <td>
+                                                    <div class="pd-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <span>(5)</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Price</td>
+                                                <td>
+                                                    <div class="p-price">$495.00</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Add To Cart</td>
+                                                <td>
+                                                    <div class="cart-add">+ add to cart</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Availability</td>
+                                                <td>
+                                                    <div class="p-stock">22 in stock</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Weight</td>
+                                                <td>
+                                                    <div class="p-weight">1,3kg</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Size</td>
+                                                <td>
+                                                    <div class="p-size">Xxl</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Color</td>
+                                                <td><span class="cs-color"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Sku</td>
+                                                <td>
+                                                    <div class="p-code">00012</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-3" role="tabpanel">
+                                    <div class="customer-review-option">
+                                        <h4>2 Comments</h4>
+                                        <div class="comment-option">
+                                            <div class="co-item">
+                                                <div class="avatar-pic">
+                                                    <img src="img/product-single/avatar-1.png" alt="">
+                                                </div>
+                                                <div class="avatar-text">
+                                                    <div class="at-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <h5>Brandon Kelley <span>27 Aug 2019</span></h5>
+                                                    <div class="at-reply">Nice !</div>
+                                                </div>
+                                            </div>
+                                            <div class="co-item">
+                                                <div class="avatar-pic">
+                                                    <img src="img/product-single/avatar-2.png" alt="">
+                                                </div>
+                                                <div class="avatar-text">
+                                                    <div class="at-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <h5>Roy Banks <span>27 Aug 2019</span></h5>
+                                                    <div class="at-reply">Nice !</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="personal-rating">
+                                            <h6>Your Ratind</h6>
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="leave-comment">
+                                            <h4>Leave A Comment</h4>
+                                            <form action="#" class="comment-form">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <input type="text" placeholder="Name">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" placeholder="Email">
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <textarea placeholder="Messages"></textarea>
+                                                        <button type="submit" class="site-btn">Send message</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				</div>
+			</div>
+		</div>
