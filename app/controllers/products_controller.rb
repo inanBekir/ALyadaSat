@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
     @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
     end
   end
-
   # GET /products/1
   # GET /products/1.json
   def show
