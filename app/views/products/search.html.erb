@@ -1,3 +1,4 @@
+<div class = "search">
 <div class = "container">
     <div class = "row-product">
     <h1>Elastic search for products</h1>
@@ -23,6 +24,7 @@
             <tr>
                 <td><%= product.pname %></td>
                 <td><%= product.pdescription %></td>
+                 <td><%= product.pprice %></td>
                 <td><%= link_to 'View', product_path(product.id) %></td>
             </tr>
             <% end %>
@@ -31,4 +33,5 @@
     <% end %>
     <% end %>
     </div>
+</div>
 </div>
