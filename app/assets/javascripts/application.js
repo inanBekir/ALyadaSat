@@ -17,3 +17,25 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require_self
+
+$(document).ready(function(){
+    $('.pop').popover({
+      container: 'body',
+      html:true,
+      title: '<span class="text-info">Share</span>' +
+      '<button type="button" id="close" class="close" onclick="$(&quot;.pop&quot;).popover(&quot;hide&quot;);">&times;</button>',
+      placement: 'top'
+    });
+});
+function copyToClipboard() {
+    var textBox = document.getElementById("link-input");
+    textBox.select();
+    document.execCommand("copy");
+    }
+function favInfo(){
+	swal("Bilgilendirme", "Size ait olan bir ürünü favorilere ekleyemezsiniz.");
+}
+function messageInfo(){
+	swal("Bilgilendirme", "Size ait olan bir ürün için sohbet başlatamazsınız.");
+}

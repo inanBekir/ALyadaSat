@@ -13,6 +13,10 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    if user_signed_in?
+      @users = User.where.not(id: current_user.id)
+      @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
+    end
   end
 
   def sellingnow

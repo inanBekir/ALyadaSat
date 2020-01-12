@@ -1,6 +1,7 @@
+<div class="messages">
 <div class="container">
 <div id="edit-row" class="row">
-<div class="col-lg-4 col-md-5 col-sm-2 mt-5">
+<div class="col-lg-4 col-md-5 col-sm-2">
     <div class="list-group">
     <span class="list-group-item list-group-item-success"><%=current_user.username%></span>
     <a href="/products/isonsell" class="list-group-item">Satışta Olanlar<span class="badge badge-warning float-right"><%= current_user.psellingcount %></span></a>
@@ -17,7 +18,7 @@
     <a href="/users/edit" class="list-group-item">Üyeliğimi Güncelle</a>
   </div>
   </div>
-<div class="col-lg-8 col-md-7 col-sm-10 mt-5">
+<div class="col-lg-8 col-md-7 col-sm-10">
 <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
@@ -99,3 +100,4 @@
         </div>
       </div>
       </div>
+</div>

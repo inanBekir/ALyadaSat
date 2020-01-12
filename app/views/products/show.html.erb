@@ -1,6 +1,5 @@
-
+<%= content_tag(:div, content_tag(:p), class: "favori-alert", id:'favorite_link', remote: true) %>
 <!-- Product -->
-
 		<div class="product_show">
 			<div class="container">
 				<div class="row">
@@ -64,10 +63,37 @@
 							<div class="product_buttons">
 								<div class="text-right d-flex flex-row align-items-start justify-content-start">
 									<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-										<div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
+										<div><div><img src="images/heart_2.svg" class="svg" alt="">
+                                        <% if user_signed_in? %>
+											<% if current_user.id != @product.user_id%>
+                                                <%= link_to favorites_update_path(product: @product), remote: true do %>
+                                                    <i class="fas fa-heart" style="font-size: 32px;"></i>
+                                                <% end %>
+											<% else %>
+                                                <%= link_to "javascript:favInfo()" do %>
+                                                    <i class="fas fa-heart" style="font-size: 32px;"></i>
+                                                <% end %>	
+											<% end %>
+										<% end %>
+                                            </div></div>
 									</div>
 									<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-										<div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
+										<div><div>
+                                        <% if user_signed_in? %>
+													<% @users.each do |user| %>
+														<% if user.id == @product.user_id %>
+															<%= link_to conversations_path(sender_id: current_user.id, receiver_id:user.id), method: :post do %>
+															<i class="fas fa-comments" style="font-size: 32px;"></i>
+															<% end %>
+														<% end %>
+													<% end %>
+													<% if current_user.id == @product.user_id %>
+													<%= link_to "javascript:messageInfo()" do %>
+														<i class="fas fa-comments" style="font-size: 32px;"></i>
+													<% end %>	
+													<% end %>
+												<% end %>
+                                         </div></div>
 									</div>
 								</div>
 							</div>
