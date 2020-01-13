@@ -24,8 +24,9 @@
             <tr>
                 <td><%= product.pname %></td>
                 <td><%= product.pdescription %></td>
-                 <td><%= product.pprice %></td>
+                <td><%= product.pprice %></td>
                 <td><%= link_to 'View', product_path(product.id) %></td>
+                <td><%= image_tag product.images[0].variant(resize: "1920x1080") %> </td>
             </tr>
             <% end %>
         <tbody>

@@ -547,6 +547,11 @@ section
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
+.product_image img{
+    width:  350px;
+    height: 250px;
+    background-size: cover;
+}
 .product_buttons > div > div svg
 {
 	max-width: 100%;
