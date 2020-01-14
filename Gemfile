@@ -52,6 +52,8 @@ gem 'mini_racer', :platforms => :ruby
 
 gem 'searchkick'
 
+gem 'kaminari'
+
 gem 'elasticsearch-model', git: 'git://github.com/elastic/elasticsearch-rails.git', branch: 'master'
 gem 'elasticsearch-rails', git: 'git://github.com/elastic/elasticsearch-rails.git', branch: 'master'
 

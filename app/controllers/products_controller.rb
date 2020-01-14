@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.search
+    @products = Product.search "*", page: params[:page], per_page: 5
     if user_signed_in?
     @users = User.where.not(id: current_user.id)
     @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
