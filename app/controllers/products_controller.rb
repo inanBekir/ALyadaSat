@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.order('updated_at DESC')
+    @products = Product.search
     if user_signed_in?
     @users = User.where.not(id: current_user.id)
     @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
@@ -124,11 +124,9 @@ class ProductsController < ApplicationController
   end
 
   def search
-    query = params[:search_products].presence && params[:search_products][:query]
-  
-    if query
-      @products = Product.search_isonsell(query)
-    end
+    @term = params[:term].to_s
+    @result = Product.search(@term)
+    @products = @result
   end
   
 

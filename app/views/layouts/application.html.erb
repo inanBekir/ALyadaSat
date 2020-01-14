@@ -35,10 +35,14 @@
       </ul>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <%= form_for :search_products, url: search_products_path, :html => {:class => 'header-search-form'}, method: :get do |form| %>
-            <%= form.text_field :query, value: params[:search_products].presence && params[:search_products][:query] %>
-            <%= form.submit 'Search' %>
-          <% end %>
+          <%= form_for :term, url: search_products_path,:html => {:class => 'header-search-form'}, method: :get do |form| %>
+							<%= text_field_tag :term, params[:term],
+								placeholder: "İstediğin ürün burada",
+								autocomplete: :off,
+								autocorrect: :off,
+								autocapitalize: :off %>
+							<%= submit_tag "Ara", class: 'hide' %>
+							<% end %>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
