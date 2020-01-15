@@ -328,6 +328,11 @@ label {
 	margin-right: 14px;
 	font-weight: 700;
 }
+.slides li img{
+	width: 900px;
+    height: 520px;
+    background-size: cover;
+}
 .regular_radio[disabled] + label
 {
 	border: solid 2px #969696;

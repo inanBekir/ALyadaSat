@@ -10,9 +10,7 @@
 							<div id="slider" class="flexslider">
 								<ul class="slides">
 									<li>
-                                        <% @product.images.each do |image| %>
-                                            <%= image_tag(image.variant(resize: "300x300")) %>
-                                        <% end %>
+                                        <%= image_tag(@product.images[0].variant(resize: "1920x1080")) %>
 									</li>
 								</ul>
 							</div>

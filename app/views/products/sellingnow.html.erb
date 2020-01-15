@@ -22,7 +22,7 @@
   <% if p.isonsell == false %>
     <div class="col-lg-4 col-md-7 col-sm-8">
     <div class="card" style="width: 18rem;">
-   <%= link_to(image_tag(p.photo.url(:medium), :class=>"img-slider"), p) %>
+   <%= link_to(image_tag(p.images[0].variant(resize: "1920x1080"), :class=>"img-slider"), p) %>
   <div class="card-body">
     <h5 class="card-title"><%= p.pname%></h5>
     <p class="card-text"><%= p.pdescription%></p>
